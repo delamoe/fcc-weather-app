@@ -260,10 +260,12 @@ function getData() {
           console.log('#pBtn clicked');
           var press;
           if (pUnit === 'm') {
-            pUnit = 'h'; //" of Mercury / Kilopascals 
+            pUnit = 'h';
+            $('#pBtn').html('Kilopascals');  
             press = baro(pUnit) + ' kPa' + pTrend();
           } else {
             pUnit = 'm';
+            $('#pBtn').html('" of Mercury');
             press = baro(pUnit) + '" Hg' + pTrend();
           }
           $('#baro').html('Barometer is at ' + press + '<br />');

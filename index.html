@@ -261,11 +261,11 @@ function getData() {
           var press;
           if (pUnit === 'm') {
             pUnit = 'h';
-           pLabel = 'Kilopascals'; 
+            pLabel = '" of Mercury';
             press = baro(pUnit) + ' kPa' + pTrend();
           } else {
             pUnit = 'm';
-            pLabel = '" of Mercury';
+            pLabel = 'Kilopascals';
             press = baro(pUnit) + '" Hg' + pTrend();
           }
           $('#pBtn').html(pLabel);

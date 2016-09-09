@@ -197,20 +197,20 @@ function getData() {
             dUnit = 'kn';
            // console.log(dUnit);
             gust_knot = windG_kn < 1 ? '' : '— Gusting to ' + windG_kn + ' Knots';
-            wind = wind_kn + ' Knots from the ' + windD + gust_knot;
+            wind = 'Wind is ' + wind_kn + ' Knots from the ' + windD + gust_knot;
             vis = 'Visibility is ' + vis_m + ' Statute Miles';
           } else if (dUnit === 'kn') {
             dUnit = 'mi';
            // console.log(dUnit);
             gust_mile = windG_m < 1 ? '' : '— Gusting to ' + windG_m + ' mph';
-            wind = wind_m + ' mph from the ' + windD + gust_mile;
+            wind = 'Wind is ' + wind_m + ' mph from the ' + windD + gust_mile;
             vis = 'Visibility is ' + vis_m + ' Statute Miles';
           } else if (dUnit === 'mi') {
             dUnit = 'km';
            // console.log(dUnit);
             gust_kilo = windG_km < 1 ? '' : '— Gusting to ' + windG_km + ' kph';
-            wind = pc.wind_kph + ' kph from the ' + windD + gust_kilo;
-            vis = 'Visibility is ' + pc.visibility_km + ' Kilometers';
+            wind = 'Wind is ' + wind_ki + ' kph from the ' + windD + gust_kilo;
+            vis = 'Visibility is ' + vis_km + ' Kilometers';
           }
 
           $('#wind').html(wind + '<br />');

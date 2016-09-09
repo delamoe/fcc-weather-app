@@ -280,11 +280,11 @@ function getData() {
         $('#tBtn').on('click', function() {
           if (tUnit === 'f') {
             tUnit = 'c';
-            $('#tBtn').html('° Celsius');
+            $('#tBtn').html('° Fahrenheit');
             $('#temp').html(temp('c'));
           } else {
             tUnit = 'f';
-            $('#tBtn').html('° Fahrenheit');
+            $('#tBtn').html('° Celsius');
             $('#temp').html(temp('f'));
           }
         });

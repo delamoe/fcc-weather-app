@@ -115,15 +115,13 @@
 
 </div>
 <script>
-/* jshint esversion:6 */
-
-const wxugKey = 'ade1114e6eb51ee9';
+var wxugKey = 'ade1114e6eb51ee9';
 var dUnit = 'mi', pUnit = 'm';
 
 getData();
 
 function getData() {
-  let lat, lon;
+  var lat, lon;
   //check for geoloc
   if (!navigator.geolocation) {
     // if not...
@@ -131,7 +129,7 @@ function getData() {
   }
   // maybe create option for manually location selection
 
-  const options = {
+  var options = {
     enableHighAccuracy: true,
     timeout: 100,
     maximumAge: 0
@@ -139,8 +137,8 @@ function getData() {
 
   //navigator.geolocation.getCurrentPosition(function () {}, function () {}, {});
   navigator.geolocation.getCurrentPosition(function(position, error, options) {
-    let t = position.coords.latitude;
-    let g = position.coords.longitude;
+    var t = position.coords.latitude;
+    var g = position.coords.longitude;
 
     //console.log('JavaScript -- \n lat ', t, ' lon ', g)
 
@@ -164,9 +162,9 @@ function getData() {
       dataType: "jsonp",
       success: function(data) {
         console.log(data);
-        const place = data.location.city + ', ' + data.location.country_name,
+        var place = data.location.city + ', ' + data.location.country_name,
           pc = data.current_observation;
-        let iconUrl = pc.icon_url.replace(/http/, 'https').replace(/k\//, 'i/'),
+        var iconUrl = pc.icon_url.replace(/http/, 'https').replace(/k\//, 'i/'),
           iconAlt = pc.icon,
           iconImg = "<img src = '" + iconUrl + "'alt=" + iconAlt + ">",
           sky = pc.weather,
@@ -185,12 +183,12 @@ function getData() {
           wind_m = pc.wind_mph,
           wind_kn = parseInt(wind_m * 0.85),
           wind_km = pc.wind_kph;
-        let windG_m = pc.wind_gust_mph < 1 ? '' : pc.wind_gust_mph;
-        let windG_kn = pc.wind_gust_mph < 1 ? '' : parseInt(pc.wind_mph * 0.85);
-        let windG_km = pc.wind_gust_kph < 1 ? '' : pc.wind_gust_kph;
+        var windG_m = pc.wind_gust_mph < 1 ? '' : pc.wind_gust_mph;
+        var windG_kn = pc.wind_gust_mph < 1 ? '' : parseInt(pc.wind_mph * 0.85);
+        var windG_km = pc.wind_gust_kph < 1 ? '' : pc.wind_gust_kph;
 
-        let wind, vis;
-        let gust_kilo, gust_knot, gust_mile;
+        var wind, vis;
+        var gust_kilo, gust_knot, gust_mile;
 
         $('#dBtn').on('click', function() { //distance unit selection
           if (dUnit === 'km') {
@@ -258,7 +256,7 @@ function getData() {
 
         $('#pBtn').on('click', function() { //pressure unit selection
           console.log('#pBtn clicked');
-          let press;
+          var press;
           if (pUnit === 'm') {
             pUnit = 'h';
             press = baro(pUnit) + ' hPa' + pTrend();

@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>FCC Wx App</title>
+<link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+ body {
+   font-family: 'Rancho', cursive;
+   color: black ;
+   background: black;
+   font-size: 30px;
+ }
+
+ .title {     
+ }
+ 
+ .coords {   
+   margin: 14px;
+   font-size: 10px;   
+ }
+
+.jumbotron {
+  background-color: rgba(200,200,200,.35);
+  margin-bottom: 2px;  
+}
+
+.btn {
+  font-size: 16px;
+  color: black;
+  margin: 0px;
+}
+
+.hotbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/2/29/Thorn_Tree_Sossusvlei_Namib_Desert_Namibia_Luca_Galuzzi_2004a.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.warmbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Sunset_at_Lake_Naivasha.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+.coolbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/4/40/Bering_Land_Bridge_NPr_Serpentine_Hot_Springs.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.coldbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/4/49/Cuernos_del_Paine_from_Lake_Peho%C3%A9.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.freezebg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/0/0c/Beaver_Valley_beautiful_in_white...jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+</head>
+<body>
+<div id='container' class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-1 col-lg-2'></div>
+    <div class='col-md-5 text-center col-lg-5 title'>
+      <div> <span style="font-size: 45px; vertical-align: middle;"><i class="fa fa-cloud"></i> {</span> FreeCodeCamp: Wx App; <span style="font-size: 45px; vertical-align: middle;"> } <i class="fa fa-tint"></i></div></span>
+      </div>
+      <div class='col-md-5 text-center col-lg-3 coords'>
+        <span id='lat' class='coords'></span>
+        <br /><span id='lon' class='coords'></span>
+      </div>
+      <div class='col-md-1 col-lg-2'></div>
+    </div>
+
+    <div class='row'>
+      <div class='col-xs-1 text-center col-lg-2'></div>
+      <div class='col-xs-10 text-center col-lg-8'>
+        <div class='jumbotron'>
+          <span id='place'></span>
+          <span id='sky'></span>
+          <span id='temp'></span>
+          <span id='vis'></span>
+          <span id='wind'></span>
+          <span id='baro'></span>
+          <span id='rain'></span>
+        </div>
+      </div>
+      <div class='col-xs-1 text-center col-lg-2'></div>
+    </div>
+
+  <div class='row'>
+      <div class='col-xs-8 col-xs-offset-2 text-center'>
+        <span><button id='tBtn' type="button" class="btn btn-info btn-xs">° Fahrenheit / ° Celsius</button>
+      
+        <button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
+      
+        <button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / HectoPascals </button></span>
+        
+      </div>
+  
+
+</div>
+<script>
+var wxugKey = 'ade1114e6eb51ee9', lat, lon;
+
+getLocation();
+
+function getLocation() {
+  
+  //check for geoloc
+  if (!navigator.geolocation) {
+    // if not...
+    $('.coords').html('Location<br/>Unavailable');
+  }
+  // maybe create option for manually location selection
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 100,
+    maximumAge: 0
+  };
+
+//navigator.geolocation.getCurrentPosition(function () {}, function () {}, {});
+navigator.geolocation.getCurrentPosition(function(position, error, options){
+    var t = position.coords.latitude;
+    var g = position.coords.longitude;
+
+    console.log('JavaScript -- \n lat ',t, ' lon ', g)
+
+
+  
+    var loc = t.toFixed(7) + ',' + g.toFixed(7);
+        console.log(loc);
+    var dlat = parseInt(t),
+    mslat = (t - dlat) * 60,
+    mlat = parseInt(mslat),
+    slat = (mslat - mlat) * 60,
+    dlon = parseInt(g),
+    mslon = (g - dlon) * 60,
+    mlon = parseInt(mslon),
+    slon = (mslon - mlon) * 60,
+    dmsLat = 'Latitude: ' + dlat + '° ' + mlat + "' " + slat.toFixed(2) + '"',
+    dmsLon = 'Longitude: ' + dlon + '° ' + mlon + "' " + slon.toFixed(2) + '"';
+  
+  
+  //console.log(dmsLat,dmsLon);
+  $('#lat').html(dmsLat);
+  $('#lon').html(dmsLon);
+
+  $.ajax({
+    url: "https://api.wunderground.com/api/" + wxugKey + "/geolookup/conditions/q/" + loc + ".json",
+    dataType: "jsonp",
+    success: function(parsed_json) {
+      console.log(parsed_json);
+      var pc = parsed_json.current_observation,
+        place = parsed_json.location.city + ', ' + parsed_json.location.country_name,
+        iconUrl = pc.icon_url.replace(/http/,'https').replace(/k\//,'i/'),
+        iconAlt = pc.icon,
+        iconImg = "<img src = '" + iconUrl + "'alt=" + iconAlt + ">";
+      
+      console.log(iconUrl,'\n',iconAlt);
+      
+      var sky = pc.weather,
+        temp_c = pc.temp_c,
+        temp_f = pc.temp_f,
+        humid = pc.relative_humidity,
+        feels_f = pc.feelslike_f,
+        feels_c = pc.feelslike_c,
+        vis_M = pc.visibility_mi,
+        vis_K = pc.visibility_km,
+        press_Mb = pc.pressure_mb,
+        press_In = pc.pressure_in,
+        dewP_f = pc.dewpoint_f,
+        dewP_c = pc.dewpoint_c,
+        windD = pc.wind_dir;
+
+      $('#dBtn').on('click', function() { //distance unit selection
+        var wind = '',
+          gust = ' — Gusting to ',
+          dUnit,
+          vis;
+        if (!dUnit) {
+          dUnit = 'ki';
+        } else if (dUnit === 'ki') {
+          // assign 
+          dUnit = 'kn';
+          wind = parseInt(pc.wind_mph * 0.85) + ' knots from the ' + windD + gust + parseInt(pc.wind_gust_mph * 0.85) + ' knots';
+          vis = 'Visibility is ' + pc.visibility_mi + ' Statute Miles';
+        } else if (dUnit === 'kn') {
+          dUnit = 'mi';
+          wind = pc.wind_mph + ' mph from the ' + windD + gust + parseInt(pc.wind_gust_mph) + ' mph';
+          vis = 'Visibility is ' + pc.visibility_mi + ' Statute Miles';
+        } else if (dUnit === 'mi') {
+          dUnit = 'ki';
+          wind = pc.wind_kph + ' kph from the ' + windD + gust + parseInt(pc.wind_gust_kph) + ' kph';
+          vis = 'Visibility is ' + pc.visibility_km + ' Kilometers';
+        }
+        $('#wind').html(wind + '<br />');
+        if (vis_M !== 'N/A') {
+          $('#vis').html(vis + '<br />');
+        }
+        ////console.log(dUnit);
+        ////console.log(wind);
+      });
+
+      $("#dBtn").trigger("click");
+      if (feels_c > 42) {
+        $('#container').addClass('hotbg');
+      } else if (feels_c > 32) {
+        $('#container').addClass('warmbg');
+      } else if (feels_c > 22) {
+        $('#container').addClass('coolbg');
+      } else if (feels_c > 12) {
+        $('#container').addClass('coldbg');
+      } else {
+        $('#container').addClass('freezebg');
+      }
+
+      $('#place').html(place + "<br />current conditions:<br />");
+      $('#sky').html(iconImg + ' ' + sky + ' ' + iconImg + '<br />');
+
+      function baro(x) {
+        if (x === 'm') return pc.pressure_in;
+        return pc.pressure_mb;
+      }
+
+      function pTrend() {
+        //console.log(pc.pressure_trend);
+        if (pc.pressure_trend === '+') {
+          return ' & Increasing';
+        } else if (pc.pressure_trend === '-') {
+          return ' & Decreasing';
+        } else {
+          return '';
+        }
+      }
+
+      $('#pBtn').on('click', function() { //pressure unit selection
+        var pUnit = 'm',
+          press;
+        if (pUnit === 'm') {
+          pUnit = 'h';
+          press = baro(pUnit) + ' hPa' + pTrend();
+        } else {
+          pUnit = 'm';
+          press = baro(pUnit) + '" of Mercury' + pTrend();
+        }
+        $('#baro').html('Barometer is at ' + press + '<br />');
+        ////console.log(pUnit);
+      });
+
+      $("#pBtn").trigger("click");
+
+      function temp(x) {
+        if (x === 'f') return pc.temp_f + '° F @ ' + humid + ' Humidity = Feels like ' + pc.feelslike_f + '° F<br />';
+        return pc.temp_c + '° C @ ' + humid + ' Humidity = Feels like ' + pc.feelslike_c + '° C<br />';
+      }
+      var tUnit = 'f';
+      $('#tBtn').on('click', function() {
+        if (tUnit === 'f') {
+          tUnit = 'c';
+          $('#temp').html(temp('c'));
+        } else {
+          tUnit = 'f';
+          $('#temp').html(temp('f'));
+        }
+      });
+
+      $("#tBtn").trigger("click");
+    }
+
+  });
+});
+
+function setHeight() { //set container full height
+  windowHeight = $(window).innerHeight();
+  $('#container').css('min-height', windowHeight);
+}
+
+setHeight();
+
+$(window).resize(function() { //call setHeight
+  setHeight();
+});
+}
+
+/*"current_observation": {
+		"precip_1hr_in":"0.00",
+		"precip_1hr_metric":" 0",
+		"precip_today_string":"0.00 in (0 mm)",
+		"precip_today_in":"0.00",
+		"precip_today_metric":"0",
+		}
+    */
+</script>
+</body></html>

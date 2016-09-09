@@ -110,7 +110,7 @@
       
               <button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
       
-              <button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / Kilopascals </button></span>
+              <button id='pBtn' type="button" class="btn btn-info btn-xs"></button></span> <!--" of Mercury / Kilopascals -->
         
       </div>
   
@@ -118,7 +118,7 @@
 </div>
 <script>
 var wxugKey = 'ade1114e6eb51ee9';
-var dUnit = 'mi', pUnit = 'm';
+//var dUnit = 'mi', pUnit = 'm';
 
 getData();
 
@@ -191,7 +191,7 @@ function getData() {
 
         var wind, vis;
         var gust_kilo, gust_knot, gust_mile;
-
+	var dUnit = 'mi';
         $('#dBtn').on('click', function() { //distance unit selection
           if (dUnit === 'km') {
             dUnit = 'kn';
@@ -255,12 +255,12 @@ function getData() {
             return '';
           }
         }
-
+	var pUnit = 'm';
         $('#pBtn').on('click', function() { //pressure unit selection
           console.log('#pBtn clicked');
           var press;
           if (pUnit === 'm') {
-            pUnit = 'h';
+            pUnit = 'h'; //" of Mercury / Kilopascals 
             press = baro(pUnit) + ' kPa' + pTrend();
           } else {
             pUnit = 'm';

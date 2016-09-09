@@ -118,7 +118,7 @@
 /* jshint esversion:6 */
 
 const wxugKey = 'ade1114e6eb51ee9';
-var dUnit = 'mi';
+var dUnit = 'mi', pUnit = 'm';
 
 getData();
 
@@ -257,8 +257,8 @@ function getData() {
         }
 
         $('#pBtn').on('click', function() { //pressure unit selection
-          var pUnit = 'm',
-            press;
+          console.log('#pBtn clicked');
+          let press;
           if (pUnit === 'm') {
             pUnit = 'h';
             press = baro(pUnit) + ' hPa' + pTrend();

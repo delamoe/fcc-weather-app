@@ -108,7 +108,7 @@
       
         <button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
       
-        <button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / HectoPascals </button></span>
+        <button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / Kilopascals </button></span>
         
       </div>
   
@@ -259,10 +259,10 @@ function getData() {
           var press;
           if (pUnit === 'm') {
             pUnit = 'h';
-            press = baro(pUnit) + ' hPa' + pTrend();
+            press = baro(pUnit) + ' kPa' + pTrend();
           } else {
             pUnit = 'm';
-            press = baro(pUnit) + '" of Mercury' + pTrend();
+            press = baro(pUnit) + '"Hg' + pTrend();
           }
           $('#baro').html('Barometer is at ' + press + '<br />');
           ////console.log(pUnit);

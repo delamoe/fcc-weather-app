@@ -255,19 +255,20 @@ function getData() {
             return '';
           }
         }
-	var pUnit = 'm';
+	var pUnit = 'm', pLabel;
         $('#pBtn').on('click', function() { //pressure unit selection
           console.log('#pBtn clicked');
           var press;
           if (pUnit === 'm') {
             pUnit = 'h';
-            $('#pBtn').html('Kilopascals');  
+           pLabel = 'Kilopascals'; 
             press = baro(pUnit) + ' kPa' + pTrend();
           } else {
             pUnit = 'm';
-            $('#pBtn').html('" of Mercury');
+            pLabel = '" of Mercury';
             press = baro(pUnit) + '" Hg' + pTrend();
           }
+          $('#pBtn').html(pLabel);
           $('#baro').html('Barometer is at ' + press + '<br />');
           ////console.log(pUnit);
         });

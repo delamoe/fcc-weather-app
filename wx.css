@@ -1,0 +1,66 @@
+body {
+   font-family: 'Rancho', cursive;
+   color: black ;
+   background: black;
+   font-size: 45px;
+ }
+
+ .title {     
+ }
+ 
+ .coords {   
+   margin: 14px;
+   font-size: 25px;   
+ }
+
+.jumbotron {
+  background-color: rgba(200,200,200,.35);
+  margin-bottom: 2px;  
+}
+
+.btn {
+  font-size: 30px;
+  color: black;
+  margin: 0px;
+}
+
+.hotbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/2/29/Thorn_Tree_Sossusvlei_Namib_Desert_Namibia_Luca_Galuzzi_2004a.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.warmbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/a/ac/Sunset_at_Lake_Naivasha.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+.coolbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/4/40/Bering_Land_Bridge_NPr_Serpentine_Hot_Springs.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.coldbg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/4/49/Cuernos_del_Paine_from_Lake_Peho%C3%A9.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.freezebg {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/0/0c/Beaver_Valley_beautiful_in_white...jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

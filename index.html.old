@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>FCC Wx App</title>
+<link href='https://fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link  rel="stylesheet" type="text/css" href="wx.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="wx.js"></script>
+</head>
+<body>
+<div id='container' class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-1 col-lg-2'></div>
+    <div class='col-md-5 text-center col-lg-5 title'>
+      <div> <span style="font-size: 45px; vertical-align: middle;"><i class="fa fa-cloud"></i> {</span> FreeCodeCamp: Wx App; <span style="font-size: 45px; vertical-align: middle;"> } <i class="fa fa-tint"></i></div></span>
+      </div>
+      <div class='col-md-5 text-center col-lg-3 coords'>
+        <span id='lat' class='coords'></span>
+        <br /><span id='lon' class='coords'></span>
+      </div>
+      <div class='col-md-1 col-lg-2'></div>
+    </div>
+
+    <div class='row'>
+      <div class='col-xs-1 text-center col-lg-2'></div>
+      <div class='col-xs-10 text-center col-lg-8'>
+        <div class='jumbotron'>
+          <span id='place'></span>
+          <span id='sky'></span>
+          <span id='temp'></span>
+          <span id='vis'></span>
+          <span id='wind'></span>
+          <span id='baro'></span>
+          <span id='rain'></span>
+        </div>
+      </div>
+      <div class='col-xs-1 text-center col-lg-2'></div>
+    </div>
+
+  <div class='row'>
+      <div class='col-xs-8 col-xs-offset-2 text-center'>
+        <span><button id='tBtn' type="button" class="btn btn-info btn-xs"></button> <!--° Fahrenheit / ° Celsius-->
+      
+              <button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
+      
+              <button id='pBtn' type="button" class="btn btn-info btn-xs"></button></span> <!--" of Mercury / Kilopascals -->
+        
+      </div>
+  
+
+</div>
+<script src="wx.js"></script>
+</body></html>

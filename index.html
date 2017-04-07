@@ -14,17 +14,20 @@
 			background: black;
 			font-size: 30px;
 		} 
-		/*.title {} */
+		.titleBrace {
+			font-size: 45px;
+			vertical-align: middle;
+		}
 		.coords {
-			margin: 14px;
+			margin-bottom: 20px;
 			font-size: 20px;
 		}
 		.jumbotron {
 			background-color: rgba(200,200,200,.35);
-			margin-bottom: 2px;
+			margin: 100px 0 2px 0;
 		}
 		.btn {
-			font-size: 16px;
+			font-size: 20px;
 			color: black;
 			margin: 0px;
 		}
@@ -69,43 +72,38 @@
 <body>
 	<div id='container' class='container-fluid'>
 		<div class='row'>
-			<div class='col-md-1 col-lg-2'></div>
-			<div class='col-md-5 text-center col-lg-5 title'>
-				<div>
-					<span style="font-size: 45px; vertical-align: middle;">{</span> FreeCodeCamp: Wx App <span style="font-size: 45px; vertical-align: middle;"> }</div></span>
-				</div>
-				<div class='col-md-5 text-center col-lg-3 coords'>
-					<span id='lat' class='coords'></span>
-					<br /><span id='lon' class='coords'></span>
-				</div>
-				<div class='col-md-1 col-lg-2'></div>
+		<div class='col-xs-6 col-xs-offset-3 text-center'>
+		</div>
+		<div class='col-xs-6 col-xs-offset-3 text-center'>
+			<div class='jumbotron'>
+				<!-- <div class='title'> -->
+					<span class='titleBrace'>{</span>
+					<span> FreeCodeCamp: Wx App </span>
+					<span class='titleBrace'>}</span>
+					<span id='lat' class='coords'></span><br />
+					<span id='lon' class='coords'></span>
+				<!-- </div> --><br />
+					<span id='place'></span>
+					<span id='sky'></span>
+					<span id='temp'></span>
+					<span id='vis'></span>
+					<span id='wind'></span>
+					<span id='baro'></span>
+					<span id='rain'></span>
 			</div>
-
-			<div class='row'>
-				<div class='col-xs-1 text-center col-lg-2'></div>
-				<div class='col-xs-10 text-center col-lg-8'>
-					<div class='jumbotron'>
-						<span id='place'></span>
-						<span id='sky'></span>
-						<span id='temp'></span>
-						<span id='vis'></span>
-						<span id='wind'></span>
-						<span id='baro'></span>
-						<span id='rain'></span>
-					</div>
-				</div>
-				<div class='col-xs-1 text-center col-lg-2'></div>
+		</div>
+		<div class='col-xs-6 col-xs-offset-3 text-center'>
+		</div>
+	</div>
+		<div class='row'>
+			<div class='col-xs-6 col-xs-offset-3 text-center'>
+				<span>
+					<button id='tBtn' type="button" class="btn btn-info btn-xs">&#176 Fahrenheit / &#176 Celsius</button>
+					<button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
+					<button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / Hectopascals </button>
+				</span>
 			</div>
-
-			<div class='row'>
-				<div class='col-xs-8 col-xs-offset-2 text-center'>
-					<span><button id='tBtn' type="button" class="btn btn-info btn-xs">&#176 Fahrenheit / &#176 Celsius</button>
-
-						<button id='dBtn' type="button" class="btn btn-info btn-xs">Miles / Kilometers / Knots</button>
-
-						<button id='pBtn' type="button" class="btn btn-info btn-xs">" of Mercury / Hectopascals </button></span>
-					</div>
-				</div>
+		</div>
 <!-- <div class='row'>
 <div class='col-xs-12 text-center'>
 <a target='_blank' id='gitHubLink' type="button" class="btn btn-warning btn-lrg" href="https://delamoe.github.io/fcc-weather-app/">developement of this app has ceased on codepen, please go to delamoe.github.io/fcc-weather-app</a>
